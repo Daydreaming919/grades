@@ -13,7 +13,7 @@ library(tidyr)
 library(knitr)  
 here::i_am("grades.Rproj")
 ```
-# Personalisation and data set import
+# 1 Personalisation and data set import
 ## Question1
 ```{r}
 courses <- read_csv(here("data", "courses.csv"))
@@ -56,5 +56,12 @@ grades <- read_delim(
     grade = col_double()
   )
 )
+```
+
+# 2 Student population analysis
+## Question5
+```{r}
+ggplot(students, aes(x = group)) +
+  geom_bar()
 ```
 
