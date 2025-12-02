@@ -306,4 +306,6 @@ pass_fail_df |>
   slice_head(n = 5) |>
     knitr::kable()
 ```
+## Question27
+The number of students who failed but have a final grade >= 10 is `r pass_fail_df |> filter(pass == FALSE, final_grade >= 10) |> nrow()`.
 
