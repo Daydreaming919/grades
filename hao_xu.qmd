@@ -189,3 +189,25 @@ ggplot(crypto_grades, aes(x = group, y = nb_grades, fill = sex)) +
   geom_boxplot()
 ```
 I can't actually understand the result... These two tables are very stange, I'm not sure whether there is something wrong. 
+
+# 5 Grade analysis
+## Question19
+```{r}
+avg_grades_per_course <- grades |>
+  inner_join(students, by = "id") |>
+  inner_join(courses, by = "course_id") |>
+  group_by(id, group, course) |>
+  summarise(avg_grade = round(mean(grade, na.rm = TRUE), 2), .groups = "drop")
+
+avg_grades_per_course <- avg_grades_per_course |>
+  pivot_wider(
+    names_from = course, 
+    values_from = avg_grade
+  )
+
+avg_grades_per_course |>
+  select(id, group, `Airship Piloting and Navigation`, `Alchemy and Chemical Engineering`) |>
+  slice_head(n = 5) |>
+  knitr::kable(caption = "Average grades per course")
+```
+
