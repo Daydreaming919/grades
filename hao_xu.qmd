@@ -211,3 +211,12 @@ avg_grades_per_course |>
   knitr::kable(caption = "Average grades per course")
 ```
 
+## Question20
+```{r}
+ggplot(avg_grades_per_course, aes(
+  x = `Cryptography and Codebreaking`, 
+  y = `Airship Piloting and Navigation`
+)) +
+  geom_point(alpha = 0.6)
+```
+
