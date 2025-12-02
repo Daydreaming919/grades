@@ -317,5 +317,16 @@ pass_rate_per_group <- pass_fail_df |>
 ggplot(pass_rate_per_group, aes(x = group, y = pass_rate)) +
   geom_col()
 ```
+## Question29
+```{r}
+failing_courses <- student_course_averages |>
+  inner_join(pass_fail_df, by = c("id", "group", "sex")) |>
+  filter(pass == FALSE, course_avg < 5) |>
+  count(course, name = "failure_count") |>
+  arrange(desc(failure_count))
+failing_courses |>
+  slice_head(n = 5) |>
+  knitr::kable()
+```
 
 
