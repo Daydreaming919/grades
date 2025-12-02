@@ -328,5 +328,19 @@ failing_courses |>
   slice_head(n = 5) |>
   knitr::kable()
 ```
-
+## Question30
+```{r}
+age_success_analysis <- pass_fail_df |>
+  inner_join(students, by = c("id", "group", "sex")) |>
+  mutate(age = as.integer(floor(age))) |>
+  group_by(age) |>
+  summarise(
+    success_rate = mean(pass),
+    count = n(), 
+    .groups = "drop"
+  )
+ggplot(age_success_analysis, aes(x = age, y = success_rate)) +
+  geom_line() +
+  geom_point()
+```
 
