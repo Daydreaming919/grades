@@ -3,7 +3,7 @@ title: "hao_xu"
 author: "Hao Xu"
 format: html
 ---
-
+Github Link: https://github.com/Daydreaming919/grades.git
 ```{r}
 library(here) 
 library(readr)  
@@ -177,5 +177,10 @@ crypto_dist <- crypto_grades |>
   count(nb_grades, name = "student_count")
 ggplot(crypto_dist, aes(x = factor(nb_grades), y = student_count)) +
   geom_col(fill = "steelblue")
+```
+## Question17
+```{r}
+ggplot(crypto_grades, aes(x = group, y = nb_grades)) +
+  geom_boxplot(outlier.shape = NA) 
 ```
 
