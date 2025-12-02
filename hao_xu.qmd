@@ -309,3 +309,13 @@ pass_fail_df |>
 ## Question27
 The number of students who failed but have a final grade >= 10 is `r pass_fail_df |> filter(pass == FALSE, final_grade >= 10) |> nrow()`.
 
+## Question28
+```{r}
+pass_rate_per_group <- pass_fail_df |>
+  group_by(group) |>
+  summarise(pass_rate = mean(pass))
+ggplot(pass_rate_per_group, aes(x = group, y = pass_rate)) +
+  geom_col()
+```
+
+
