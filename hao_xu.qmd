@@ -44,3 +44,17 @@ students <- read_csv(
 )
 ```
 
+## Question4
+```{r}
+grades <- read_delim(
+  here("data", "grades.csv"),
+  delim = ":",      
+  na = "_",         
+  col_types = cols( 
+    id = col_integer(),
+    course_id = col_integer(),
+    grade = col_double()
+  )
+)
+```
+
