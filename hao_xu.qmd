@@ -92,8 +92,7 @@ students |>
     median_age = as.integer(round(median(age)))
   ) |>
   kable(
-    col.names = c("Group", "Median Age (Integer)"),
-    caption = "Median Age of Students by Group"
+    col.names = c("Group", "Median Age"),
   )
 ```
 
