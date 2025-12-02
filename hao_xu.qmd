@@ -107,3 +107,7 @@ students |>
   kable(caption = "Oldest Student in Each Group")
 ```
 
+# 3 Simple grade analysis
+## Question10
+The data set contains `r sum(!is.na(grades$grade))` grades.
+
