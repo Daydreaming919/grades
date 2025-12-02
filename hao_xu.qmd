@@ -263,4 +263,9 @@ final_grades_df |>
   knitr::kable()
 ```
 
+## Question24
+```{r}
+ggplot(final_grades_df, aes(x = group, y = final_grade)) +
+  geom_boxplot()
+```
 
