@@ -233,4 +233,18 @@ correlation_per_group |>
   slice_head(n = 5) |>
   knitr::kable(caption = "Correlation between Etiquette and Cryptography by Group")
 ```
+## Question22
+```{r}
+target_group <- correlation_per_group |>
+  slice_max(abs(correlation), n = 1) |>
+  pull(group)
+
+avg_grades_per_course |>
+  filter(group == target_group) |>
+  ggplot(aes(
+    x = `Cryptography and Codebreaking`, 
+    y = `Etiquette and Social Graces`
+  )) +
+  geom_point(size = 3)
+```
 
