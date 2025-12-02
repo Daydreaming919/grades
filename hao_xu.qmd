@@ -18,5 +18,17 @@ here::i_am("grades.Rproj")
 ```{r}
 courses <- read_csv(here("data", "courses.csv"))
 ```
+## Question 2
+```{r}
+courses |>
+  arrange(course) |>
+  rename(
+    "course name" = course,
+    "identifier" = course_id,
+    "module" = module,
+    "number of exams" = nb_grades  
+  ) |>
+  kable()
 ```
+
 
