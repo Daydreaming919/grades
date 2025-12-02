@@ -95,4 +95,15 @@ students |>
     col.names = c("Group", "Median Age"),
   )
 ```
+## Question9
+```{r}
+students |>
+  mutate(age = as.integer(age)) |>
+  group_by(group) |>
+  slice_max(age, n = 1) |>
+  ungroup() |>
+  select(id, sex, age) |>
+  arrange(desc(age)) |>
+  kable(caption = "Oldest Student in Each Group")
+```
 
