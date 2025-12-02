@@ -69,4 +69,19 @@ ggplot(students, aes(x = group)) +
 ggplot(students, aes(x = group, fill = sex)) +
   geom_bar(position = "fill")
 ```
+## Question7
+```{r}
+library(lubridate)
+students <- students |>
+  mutate(
+    raw_age = time_length(today() - birth_date, unit = "year"),
+    age = raw_age
+  )
+```
+
+```{r}
+ggplot(students, aes(x = age)) +
+  geom_density(bw = "sj", fill = "skyblue", alpha = 0.5) +
+  geom_rug(alpha = 0.5) 
+```
 
