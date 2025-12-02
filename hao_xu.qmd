@@ -104,7 +104,8 @@ students |>
   ungroup() |>
   select(id, sex, age) |>
   arrange(desc(age)) |>
-  kable(caption = "Oldest Student in Each Group")
+  slice_tail(n = 5) |>
+  knitr::kable()
 ```
 
 # 3 Simple grade analysis
@@ -128,4 +129,29 @@ grades |>
   ggplot(aes(x = grade, fill = as.factor(module))) +
   geom_density(alpha = 0.5, na.rm = TRUE)
 ```
+# 4 Attendance analysis
+
+## Question13
+```{r}
+grades_per_student <- students |>
+  inner_join(grades, by = "id") |>
+  group_by(id, group, sex) |>
+  summarise(nb_grades = n(), .groups = "drop")
+```
+```{r}
+grades_per_student |>
+  slice_head(n = 5) |>
+  knitr::kable()
+```
+```{r}
+grades_per_student |>
+  summarise(
+    min = min(nb_grades),
+    max = max(nb_grades),
+    average = mean(nb_grades),
+    median = median(nb_grades)
+  ) |>
+  knitr::kable(caption = "Summary statistics of grades per student")
+```
+
 
