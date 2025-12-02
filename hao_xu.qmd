@@ -171,4 +171,11 @@ crypto_grades |>
   slice_head(n = 5) |>
   knitr::kable(caption = "Grades per student in Cryptography")
 ```
+## Question16
+```{r}
+crypto_dist <- crypto_grades |>
+  count(nb_grades, name = "student_count")
+ggplot(crypto_dist, aes(x = factor(nb_grades), y = student_count)) +
+  geom_col(fill = "steelblue")
+```
 
