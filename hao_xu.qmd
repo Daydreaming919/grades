@@ -64,4 +64,9 @@ grades <- read_delim(
 ggplot(students, aes(x = group)) +
   geom_bar()
 ```
+## Question6
+```{r}
+ggplot(students, aes(x = group, fill = sex)) +
+  geom_bar(position = "fill")
+```
 
