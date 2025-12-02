@@ -268,4 +268,9 @@ final_grades_df |>
 ggplot(final_grades_df, aes(x = group, y = final_grade)) +
   geom_boxplot()
 ```
+## Question25
+```{r}
+ggplot(final_grades_df, aes(x = group, y = final_grade, fill = sex)) +
+  geom_boxplot()
+```
 
