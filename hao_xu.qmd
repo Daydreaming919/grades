@@ -273,4 +273,37 @@ ggplot(final_grades_df, aes(x = group, y = final_grade)) +
 ggplot(final_grades_df, aes(x = group, y = final_grade, fill = sex)) +
   geom_boxplot()
 ```
+## Question26
+```{r}
+cond1_course_check <- student_course_averages |>
+  group_by(id) |>
+  summarise(
+    pass_condition_1 = min(course_avg) >= 5,
+    .groups = "drop"
+  )
+
+module_averages <- student_course_averages |>
+  group_by(id, module) |>
+  summarise(
+    mod_avg = mean(course_avg), 
+    .groups = "drop"
+  )
+
+cond2_module_check <- module_averages |>
+  group_by(id) |>
+  summarise(
+    pass_condition_2 = all(mod_avg >= 10),
+    .groups = "drop"
+  )
+
+pass_fail_df <- final_grades_df |>
+  left_join(cond1_course_check, by = "id") |>
+  left_join(cond2_module_check, by = "id") |>
+  mutate(pass = pass_condition_1 & pass_condition_2) |>
+  select(id, group, sex, final_grade, pass)
+
+pass_fail_df |>
+  slice_head(n = 5) |>
+    knitr::kable()
+```
 
