@@ -183,4 +183,9 @@ ggplot(crypto_dist, aes(x = factor(nb_grades), y = student_count)) +
 ggplot(crypto_grades, aes(x = group, y = nb_grades)) +
   geom_boxplot(outlier.shape = NA) 
 ```
-
+## Question18
+```{r}
+ggplot(crypto_grades, aes(x = group, y = nb_grades, fill = sex)) +
+  geom_boxplot()
+```
+I can't actually understand the result... These two tables are very stange, I'm not sure whether there is something wrong. 
