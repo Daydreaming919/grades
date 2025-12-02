@@ -121,4 +121,11 @@ grades |>
   ggplot(aes(x = group, y = avg_grade)) +
   geom_col(fill = "steelblue") 
 ```
+## Question12
+```{r}
+grades |>
+  inner_join(courses, by = "course_id") |>
+  ggplot(aes(x = grade, fill = as.factor(module))) +
+  geom_density(alpha = 0.5, na.rm = TRUE)
+```
 
