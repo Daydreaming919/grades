@@ -4,3 +4,19 @@ author: "Hao Xu"
 format: html
 ---
 
+```{r}
+library(here) 
+library(readr)  
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(knitr)  
+here::i_am("grades.Rproj")
+```
+# Personalisation and data set import
+## Question1
+```{r}
+courses <- read_csv(here("data", "courses.csv"))
+```
+```
+
