@@ -159,4 +159,16 @@ grades_per_student |>
 ggplot(grades_per_student, aes(x = nb_grades, fill = sex)) +
   geom_density(alpha = 0.5) 
 ```
+## Question15
+```{r}
+crypto_grades <- grades |>
+  inner_join(courses, by = "course_id") |>
+  filter(course == "Cryptography and Codebreaking") |>
+  inner_join(students, by = "id") |>
+  group_by(id, group, sex) |>
+  summarise(nb_grades = n(), .groups = "drop")
+crypto_grades |>
+  slice_head(n = 5) |>
+  knitr::kable(caption = "Grades per student in Cryptography")
+```
 
