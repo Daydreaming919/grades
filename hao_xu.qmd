@@ -84,4 +84,16 @@ ggplot(students, aes(x = age)) +
   geom_density(bw = "sj", fill = "skyblue", alpha = 0.5) +
   geom_rug(alpha = 0.5) 
 ```
+## Question8
+```{r}
+students |>
+  group_by(group) |>
+  summarise(
+    median_age = as.integer(round(median(age)))
+  ) |>
+  kable(
+    col.names = c("Group", "Median Age (Integer)"),
+    caption = "Median Age of Students by Group"
+  )
+```
 
