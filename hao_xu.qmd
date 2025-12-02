@@ -219,4 +219,18 @@ ggplot(avg_grades_per_course, aes(
 )) +
   geom_point(alpha = 0.6)
 ```
+## Question21
+```{r}
+correlation_per_group <- avg_grades_per_course |>
+  group_by(group) |>
+  summarise(
+    correlation = cor(
+      `Etiquette and Social Graces`, 
+      `Cryptography and Codebreaking`,
+    )
+  )
+correlation_per_group |>
+  slice_head(n = 5) |>
+  knitr::kable(caption = "Correlation between Etiquette and Cryptography by Group")
+```
 
