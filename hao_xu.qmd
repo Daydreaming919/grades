@@ -129,6 +129,7 @@ grades |>
   ggplot(aes(x = grade, fill = as.factor(module))) +
   geom_density(alpha = 0.5, na.rm = TRUE)
 ```
+According to the picture, the module 1 has an average grade around 12, the varience is smaller to module one which means the grades are more concentrated. In module 2, the average grade is 10, and it has a bigger varience which means the students may have more differentiated grades.
 # 4 Attendance analysis
 
 ## Question13
@@ -159,6 +160,7 @@ grades_per_student |>
 ggplot(grades_per_student, aes(x = nb_grades, fill = sex)) +
   geom_density(alpha = 0.5) 
 ```
+
 ## Question15
 ```{r}
 crypto_grades <- grades |>
@@ -219,6 +221,7 @@ ggplot(avg_grades_per_course, aes(
 )) +
   geom_point(alpha = 0.6)
 ```
+According to the picture, *Cryptography and Codebreaking* and *Airship Piloting and Navigation* shows a positive relationship.
 ## Question21
 ```{r}
 correlation_per_group <- avg_grades_per_course |>
@@ -247,6 +250,8 @@ avg_grades_per_course |>
   )) +
   geom_point(size = 3)
 ```
+The grades of *Cryptography and Codebreaking* and *Etiquette and Social Graces* are correlated positively.
+
 ## Question23
 ```{r}
 student_course_averages <- grades |>
@@ -268,11 +273,15 @@ final_grades_df |>
 ggplot(final_grades_df, aes(x = group, y = final_grade)) +
   geom_boxplot()
 ```
+The picture shows that the final grades of groups are quite different. The group 5 has a relatively high final grade distribution than other groups, while the group 18 has a relatively low final grade. Most of the groups have a median grade close to 11. 
+
 ## Question25
 ```{r}
 ggplot(final_grades_df, aes(x = group, y = final_grade, fill = sex)) +
   geom_boxplot()
 ```
+According to the picture, most of the groups do not show significant differences in final grades regarding to the sex, while several groups(13, 2, 3, 7, 15, 16) have very significant differences. In most of the case, female students show a relatively low final grades (except for the group 15).
+
 ## Question26
 ```{r}
 cond1_course_check <- student_course_averages |>
@@ -317,6 +326,8 @@ pass_rate_per_group <- pass_fail_df |>
 ggplot(pass_rate_per_group, aes(x = group, y = pass_rate)) +
   geom_col()
 ```
+Group 1, 5, 4, 9 have the highest pass rate(100%), while group 18 has the lowest pass rate(54%).
+
 ## Question29
 ```{r}
 failing_courses <- student_course_averages |>
@@ -328,6 +339,8 @@ failing_courses |>
   slice_head(n = 5) |>
   knitr::kable()
 ```
+Electrical Engineering and Telegraphy is the course the most responsible of student failure.
+
 ## Question30
 ```{r}
 age_success_analysis <- pass_fail_df |>
@@ -343,4 +356,4 @@ ggplot(age_success_analysis, aes(x = age, y = success_rate)) +
   geom_line() +
   geom_point()
 ```
-
+There are some ages that shows a high pass rate, but the sample size is too small to get a concret conclusion.
