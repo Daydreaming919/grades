@@ -247,4 +247,20 @@ avg_grades_per_course |>
   )) +
   geom_point(size = 3)
 ```
+## Question23
+```{r}
+student_course_averages <- grades |>
+  inner_join(students, by = "id") |>
+  inner_join(courses, by = "course_id") |>
+  group_by(id, group, sex, course, module) |> 
+  summarise(course_avg = mean(grade, na.rm = TRUE), .groups = "drop")
+final_grades_df <- student_course_averages |>
+  group_by(id, group, sex) |>
+  summarise(final_grade = mean(course_avg), .groups = "drop") |>
+  arrange(desc(final_grade))
+final_grades_df |>
+  slice_head(n = 5) |>
+  knitr::kable()
+```
+
 
